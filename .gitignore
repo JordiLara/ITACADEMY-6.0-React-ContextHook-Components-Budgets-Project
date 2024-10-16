@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 package-lock.json
 
+#Tailwind
+postcss.config.js
+tailwind.config.js
+
