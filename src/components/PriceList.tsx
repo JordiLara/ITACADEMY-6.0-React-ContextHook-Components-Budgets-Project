@@ -1,4 +1,5 @@
 import React from 'react';
+import WebCustomization from './WebCustomization';
 
 export interface Service {
   id: string;
@@ -16,9 +17,12 @@ export const services: Service[] = [
 interface PriceListProps {
   selectedServices: string[];
   onServiceChange: (serviceId: string) => void;
+  webPages: number;
+  webLanguages: number;
+  onWebCustomizationChange: (pages: number, languages: number) => void;
 }
 
-const PriceList: React.FC<PriceListProps> = ({ selectedServices, onServiceChange }) => {
+const PriceList: React.FC<PriceListProps> = ({ selectedServices, onServiceChange, webPages, webLanguages, onWebCustomizationChange }) => {
   return (
     <div className="space-y-6">
       {services.map(service => (
@@ -42,6 +46,13 @@ const PriceList: React.FC<PriceListProps> = ({ selectedServices, onServiceChange
               </label>
             </div>
           </div>
+          {service.id === 'Web' && selectedServices.includes('Web') && (
+            <WebCustomization
+              pages = {webPages}
+              languages = {webLanguages}
+              onChange = {onWebCustomizationChange}
+            />
+          )}
         </div>
       ))}
     </div>

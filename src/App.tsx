@@ -4,6 +4,8 @@ import Header from './components/Header';
 
 function App() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [webPages, setWebPages] = useState(1);
+  const [webLanguages, setWebLanguages] = useState(1);
 
   const handleServiceChange = (serviceId: string) => {
     setSelectedServices(prev =>
@@ -13,8 +15,22 @@ function App() {
     );
   };
 
+  const handleWebCustomizationChange = (pages: number, languages: number) => {
+    setWebPages(pages);
+    setWebLanguages(languages);
+  };
+
+  const calculateWebCost = () => {
+    const basePrice = services.find(service => service.id === 'Web')?.price || 0;
+    const additionalCost = (webPages + webLanguages) * 30;
+    return basePrice + additionalCost;
+  };
+
   const totalPrice = selectedServices.reduce((total, serviceId) => {
     const service = services.find(service => service.id === serviceId);
+    if (service?.id === 'Web') {
+      return total + calculateWebCost();
+    }
     return total + (service ? service.price : 0);
   }, 0);
 
@@ -25,12 +41,21 @@ function App() {
         <PriceList
           selectedServices = {selectedServices}
           onServiceChange = {handleServiceChange}
+          webPages = {webPages}
+          webLanguages = {webLanguages}
+          onWebCustomizationChange = {handleWebCustomizationChange}
         />
         <div className="mt-8 pt-4 border-t border-gray-200">
           <p className="text-2xl font-bold text-gray-800 flex justify-between items-center">
             Preu pressuposat: 
             <span className="text-4xl">{totalPrice} €</span>
           </p>
+          {selectedServices.includes('Web') && (
+            <p className="text-lg text-gray-600 flex justify-between items-center mt-2">
+              Cost total del web:
+              <span className="font-semibold">{calculateWebCost()} €</span>
+            </p>
+          )}
         </div>
       </div>
     </div>
