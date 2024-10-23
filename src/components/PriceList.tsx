@@ -26,7 +26,7 @@ const PriceList: React.FC<PriceListProps> = ({ selectedServices, onServiceChange
   return (
     <div className="space-y-6">
       {services.map(service => (
-        <div key = {service.id} className="bg-[#FFF8E7] p-6 rounded-2xl shadow-md">
+        <div key = {service.id} className="bg-yellow-100 p-6 rounded-2xl shadow-md">
           <div className="flex justify-between items-center">
             <div>
               <h2 className="text-2xl font-bold text-gray-800">{service.name}</h2>

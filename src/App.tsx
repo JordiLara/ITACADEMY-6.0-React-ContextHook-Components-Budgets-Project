@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import PriceList, { services } from './components/PriceList';
 import Header from './components/Header';
+import Welcome from './components/Welcome';
 
-function App() {
+function Calculator() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [webPages, setWebPages] = useState(1);
   const [webLanguages, setWebLanguages] = useState(1);
@@ -37,6 +39,15 @@ function App() {
   return (
     <div className="min-h-screen bg-[#FFF8E7] flex flex-col items-center justify-center p-4">
       <Header />
+      <div className="bg-yellow-100 p-8 rounded-3xl shadow-lg w-full max-w-2xl">
+        <div className="mb-6">
+          <Link
+            to="/"
+            className="inline-block px-4 py-2 bg-purple-300 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+          >
+            ← Tornar a l'inici
+          </Link>
+        </div>
         <PriceList
           selectedServices = {selectedServices}
           onServiceChange = {handleServiceChange}
@@ -51,6 +62,18 @@ function App() {
           </p>
         </div>
       </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path = "/" element = {<Welcome />} />
+        <Route path = "/calculator" element = {<Calculator />} />
+      </Routes>
+    </Router>
   );
 }
 
