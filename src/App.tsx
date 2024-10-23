@@ -37,7 +37,6 @@ function App() {
   return (
     <div className="min-h-screen bg-[#FFF8E7] flex flex-col items-center justify-center p-4">
       <Header />
-      <div className="bg-white p-8 rounded-3xl shadow-lg w-full max-w-2xl">
         <PriceList
           selectedServices = {selectedServices}
           onServiceChange = {handleServiceChange}
@@ -50,15 +49,8 @@ function App() {
             Preu pressuposat: 
             <span className="text-4xl">{totalPrice} €</span>
           </p>
-          {selectedServices.includes('Web') && (
-            <p className="text-lg text-gray-600 flex justify-between items-center mt-2">
-              Cost total del web:
-              <span className="font-semibold">{calculateWebCost()} €</span>
-            </p>
-          )}
         </div>
       </div>
-    </div>
   );
 }
 
