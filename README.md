@@ -1,50 +1,36 @@
-# React + TypeScript + Vite
+Project to practise React concepts. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#Project Name: Budget Calculator
+A quick and easy way to estimate your digital project budget.
 
-Currently, two official plugins are available:
+#Description
+This application is designed to help you quickly and easily calculate the budget for your digital project.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#How it works:
 
-## Expanding the ESLint configuration
+Select your services: Choose from a variety of services to include in your project.
+Customize options: Tailor your project to your specific needs by adjusting various options.
+Get an instant estimate: Receive a detailed breakdown of your estimated costs.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+#Technologies Used
+  React: A JavaScript library for building user interfaces.
+  Vite: A build tool for frontend development.
+  TypeScript: A typed superset of JavaScript.
+  Tailwind CSS: A utility-first CSS framework.
+  Getting Started
+  
+#Clone the repository:
+  Bash
+  git clone https://your-repository-url.git
+  Usa el código con precaución.
 
-- Configure the top-level `parserOptions` property like this:
+#Install dependencies:
+  Bash
+  cd budget-calculator
+  npm install
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+#Run the development server:
+  Bash
+  npm run dev
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
