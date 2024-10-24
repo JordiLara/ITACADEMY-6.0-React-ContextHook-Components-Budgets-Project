@@ -22,8 +22,7 @@ Get an instant estimate: Receive a detailed breakdown of your estimated costs.
 #Clone the repository:
   Bash
   git clone https://your-repository-url.git
-  Usa el código con precaución.
-
+  
 #Install dependencies:
   Bash
   cd budget-calculator
