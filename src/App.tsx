@@ -3,11 +3,18 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import PriceList, { services } from './components/PriceList';
 import Header from './components/Header';
 import Welcome from './components/Welcome';
+import BudgetList from './components/BudgetList';
+import BudgetRequestForm from './components/BudgetRequestForm';
+import { Budget } from './types.ts/Budget';
 
 function Calculator() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [webPages, setWebPages] = useState(1);
   const [webLanguages, setWebLanguages] = useState(1);
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [budgets, setBudgets] = useState<Budget[]>([]);
 
   const handleServiceChange = (serviceId: string) => {
     setSelectedServices(prev =>
@@ -36,14 +43,57 @@ function Calculator() {
     return total + (service ? service.price : 0);
   }, 0);
 
+  const isValidForm = () => {
+    return (
+      name.trim() !== '' &&
+      phone.trim() !== '' &&
+      email.trim() !== '' &&
+      selectedServices.length > 0 &&
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    );
+  };
+
+  const handleSaveBudget = () => {
+    if (!isValidForm()) {
+      alert('Si us plau, omple tots els camps necessaris correctament');
+      return;
+    }
+
+    const newBudget: Budget = {
+      id: Date.now().toString(),
+      name,
+      phone,
+      email,
+      services: selectedServices,
+      totalPrice,
+      date: new Date().toLocaleDateString('ca-ES'),
+      ...(selectedServices.includes('Web') && {
+        webPages,
+        webLanguages,
+      }),
+    };
+
+    setBudgets(prev => [...prev, newBudget]);
+    setName('');
+    setPhone('');
+    setEmail('');
+    setSelectedServices([]);
+    setWebPages(1);
+    setWebLanguages(1);
+  };
+
+  const handleDeleteBudget = (id: string) => {
+    setBudgets(prev => prev.filter(budget => budget.id !== id));
+  };
+
   return (
     <div className="min-h-screen bg-[#FFF8E7] flex flex-col items-center justify-center p-4">
       <Header />
-      <div className="bg-yellow-100 p-8 rounded-3xl shadow-lg w-full max-w-2xl">
+      <div className="bg-white p-8 rounded-3xl shadow-lg w-full max-w-2xl">
         <div className="mb-6">
           <Link
             to="/"
-            className="inline-block px-4 py-2 bg-purple-300 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+            className="inline-block px-4 py-2 bg-yellow-100 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
           >
             ← Tornar a l'inici
           </Link>
@@ -61,6 +111,19 @@ function Calculator() {
             <span className="text-4xl">{totalPrice} €</span>
           </p>
         </div>
+
+        <BudgetRequestForm
+          name = {name}
+          setName = {setName}
+          phone = {phone}
+          setPhone = {setPhone}
+          email = {email}
+          setEmail = {setEmail}
+          onSaveBudget = {handleSaveBudget}
+          isValid = {isValidForm()}
+        />
+        
+        <BudgetList budgets = {budgets} onDeleteBudget = {handleDeleteBudget} />
       </div>
     </div>
   );
