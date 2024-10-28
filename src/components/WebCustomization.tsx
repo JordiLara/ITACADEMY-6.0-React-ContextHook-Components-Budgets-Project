@@ -36,9 +36,9 @@ const WebCustomization: React.FC<WebCustomizationProps> = ({ pages, languages, o
               Nombre de pàgines
             </label>
             <button
-              onClick={() => setShowPagesModal(true)}
+              onClick = {() => setShowPagesModal(true)}
               className="ml-2 text-gray-500 hover:text-gray-700"
-              title="Més informació"
+              title = "Més informació"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
