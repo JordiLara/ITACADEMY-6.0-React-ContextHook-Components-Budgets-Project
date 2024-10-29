@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import PriceList, { services } from './components/PriceList';
 import Header from './components/Header';
-import Welcome from './components/Welcome';
+import Welcome from './pages/Welcome';
 import BudgetList from './components/BudgetList';
 import BudgetRequestForm from './components/BudgetRequestForm';
 import { Budget } from './types.ts/Budget';
