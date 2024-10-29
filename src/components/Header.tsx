@@ -1,4 +1,4 @@
-import React from 'react';
+
 import headerBackground from '../assets/headerBackground.png';
 
 const Header: React.FC = () => {
