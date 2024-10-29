@@ -15,14 +15,12 @@ const BudgetList: React.FC<BudgetListProps> = ({ budgets, onDeleteBudget }) => {
   const getFilteredAndSortedBudgets = () => {
     let filteredBudgets = budgets;
     
-    // Apply search filter
     if (searchQuery.trim()) {
       filteredBudgets = budgets.filter(budget => 
         budget.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
-    // Apply sorting
     const sortedBudgets = [...filteredBudgets];
     
     switch (sortType) {
@@ -42,7 +40,6 @@ const BudgetList: React.FC<BudgetListProps> = ({ budgets, onDeleteBudget }) => {
   return (
     <div className="mt-8">
       <div className="space-y-4">
-        {/* Search input */}
         <div className="relative">
           <input
             type = "text"
@@ -65,8 +62,6 @@ const BudgetList: React.FC<BudgetListProps> = ({ budgets, onDeleteBudget }) => {
             />
           </svg>
         </div>
-
-        {/* Sort buttons */}
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-bold">Els meus pressupostos</h2>
           <div className="flex gap-2">
@@ -100,8 +95,6 @@ const BudgetList: React.FC<BudgetListProps> = ({ budgets, onDeleteBudget }) => {
             )}
           </div>
         </div>
-
-        {/* Results count */}
         <div className="text-sm text-gray-600">
           {searchQuery && (
             <p>
@@ -109,8 +102,6 @@ const BudgetList: React.FC<BudgetListProps> = ({ budgets, onDeleteBudget }) => {
             </p>
           )}
         </div>
-
-        {/* Budgets list */}
         {budgets.length === 0 ? (
           <p className="text-gray-600">No hi ha pressupostos guardats encara.</p>
         ) : getFilteredAndSortedBudgets().length === 0 ? (
