@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Budget } from '../types.ts/Budget';
 
 interface BudgetListProps {

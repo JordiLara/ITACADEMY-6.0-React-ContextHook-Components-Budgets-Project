@@ -1,4 +1,4 @@
-import React from 'react';
+
 import WebCustomization from './WebCustomization';
 
 export interface Service {

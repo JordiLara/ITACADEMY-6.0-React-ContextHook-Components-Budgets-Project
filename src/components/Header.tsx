@@ -1,5 +1,6 @@
 import React from 'react';
 import headerBackground from '../assets/headerBackground.png';
+
 const Header: React.FC = () => {
   return (
     <header className="w-full max-w-3xl mb-12">
