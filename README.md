@@ -1,3 +1,4 @@
+## 
 ![Welcome](src/assets/images/Welcome.png)
 ![Screenshoot-1](src/assets/images/Budgets1.png)
 ![Screenshoot-2](src/assets/images/Budgets2.png)
@@ -5,7 +6,7 @@
 
 Project to practise React concepts. 
 
-**Project Name 📋: Budget Calculator**
+## Project Name 📋: Budget Calculator
 
 A quick and easy way to estimate your digital project budget.
 
@@ -26,7 +27,7 @@ Get an instant estimate: Receive a detailed breakdown of your estimated costs.
   TypeScript: A typed superset of JavaScript.
   Tailwind CSS: A utility-first CSS framework.
 
-**Getting Started:**🔧
+**Getting Started:** 🔧
   
   # 1. Clone the Repository:
   Bash
